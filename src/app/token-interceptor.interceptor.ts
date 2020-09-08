@@ -16,9 +16,11 @@ export class TokenInterceptorInterceptor implements HttpInterceptor {
 
   intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
 
-    if (request.url.indexOf('refresh') !== -1 || request.url.indexOf('login') !== -1) {
-      return next.handle(request);
-    }
+    if (request.url.indexOf('refresh') !== -1 || request.url.indexOf('login') !== -1
+|| (request.url.indexOf('/api/posts/') !== -1 && request.method.indexOf('GET') !== -1)
+|| (request.url.indexOf('/api/subreddit') !== -1 && request.method.indexOf('GET') !== -1)) {
+return next.handle(request);
+}
 
     const jwtToken = this.authService.getJwtToken();
 

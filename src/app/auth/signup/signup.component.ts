@@ -13,7 +13,7 @@ import { Router } from '@angular/router';
 })
 export class SignupComponent implements OnInit,OnDestroy {
 
-  signupSubscription :  Subscription[];
+  signupSubscription :  Subscription[] =[];
   signupRequestPayload : SignupRequestPayload;
   signUpForm : FormGroup
 
